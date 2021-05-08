@@ -1,0 +1,11 @@
+C:\Users\MEHMET\source\repos\BorsaOtomasyonu\BorsaOtomasyonu\obj\Debug\BorsaOtomasyonu.csprojAssemblyReference.cache
+C:\Users\MEHMET\source\repos\BorsaOtomasyonu\BorsaOtomasyonu\obj\Debug\BorsaOtomasyonu.Form1.resources
+C:\Users\MEHMET\source\repos\BorsaOtomasyonu\BorsaOtomasyonu\obj\Debug\BorsaOtomasyonu.Form2.resources
+C:\Users\MEHMET\source\repos\BorsaOtomasyonu\BorsaOtomasyonu\obj\Debug\BorsaOtomasyonu.Properties.Resources.resources
+C:\Users\MEHMET\source\repos\BorsaOtomasyonu\BorsaOtomasyonu\obj\Debug\BorsaOtomasyonu.csproj.GenerateResource.cache
+C:\Users\MEHMET\source\repos\BorsaOtomasyonu\BorsaOtomasyonu\obj\Debug\BorsaOtomasyonu.csproj.CoreCompileInputs.cache
+C:\Users\MEHMET\source\repos\BorsaOtomasyonu\BorsaOtomasyonu\bin\Debug\BorsaOtomasyonu.exe.config
+C:\Users\MEHMET\source\repos\BorsaOtomasyonu\BorsaOtomasyonu\bin\Debug\BorsaOtomasyonu.exe
+C:\Users\MEHMET\source\repos\BorsaOtomasyonu\BorsaOtomasyonu\bin\Debug\BorsaOtomasyonu.pdb
+C:\Users\MEHMET\source\repos\BorsaOtomasyonu\BorsaOtomasyonu\obj\Debug\BorsaOtomasyonu.exe
+C:\Users\MEHMET\source\repos\BorsaOtomasyonu\BorsaOtomasyonu\obj\Debug\BorsaOtomasyonu.pdb
