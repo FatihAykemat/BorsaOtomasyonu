@@ -31,11 +31,14 @@ namespace BorsaOtomasyonu
         {
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label9 = new System.Windows.Forms.Label();
             this.urunOnay = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.onayLabel = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button6 = new System.Windows.Forms.Button();
@@ -62,7 +65,6 @@ namespace BorsaOtomasyonu
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.urunKatBox = new System.Windows.Forms.TextBox();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -86,6 +88,7 @@ namespace BorsaOtomasyonu
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label9);
             this.tabPage1.Controls.Add(this.urunOnay);
             this.tabPage1.Controls.Add(this.button3);
             this.tabPage1.Controls.Add(this.onayLabel);
@@ -98,10 +101,20 @@ namespace BorsaOtomasyonu
             this.tabPage1.Text = "Admin";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label9.Location = new System.Drawing.Point(59, 29);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(233, 25);
+            this.label9.TabIndex = 8;
+            this.label9.Text = "Admin Onaylama Sayfası";
+            // 
             // urunOnay
             // 
             this.urunOnay.AutoSize = true;
-            this.urunOnay.Location = new System.Drawing.Point(231, 45);
+            this.urunOnay.Location = new System.Drawing.Point(243, 69);
             this.urunOnay.Name = "urunOnay";
             this.urunOnay.Size = new System.Drawing.Size(12, 17);
             this.urunOnay.TabIndex = 7;
@@ -109,7 +122,7 @@ namespace BorsaOtomasyonu
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(231, 82);
+            this.button3.Location = new System.Drawing.Point(215, 112);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(89, 47);
             this.button3.TabIndex = 6;
@@ -121,7 +134,7 @@ namespace BorsaOtomasyonu
             // onayLabel
             // 
             this.onayLabel.AutoSize = true;
-            this.onayLabel.Location = new System.Drawing.Point(70, 45);
+            this.onayLabel.Location = new System.Drawing.Point(70, 69);
             this.onayLabel.Name = "onayLabel";
             this.onayLabel.Size = new System.Drawing.Size(12, 17);
             this.onayLabel.TabIndex = 5;
@@ -129,7 +142,7 @@ namespace BorsaOtomasyonu
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(54, 82);
+            this.button5.Location = new System.Drawing.Point(51, 112);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(95, 47);
             this.button5.TabIndex = 4;
@@ -140,6 +153,8 @@ namespace BorsaOtomasyonu
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.textBox3);
+            this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Controls.Add(this.textBox2);
             this.tabPage2.Controls.Add(this.groupBox3);
             this.tabPage2.Controls.Add(this.groupBox2);
@@ -153,9 +168,25 @@ namespace BorsaOtomasyonu
             this.tabPage2.Text = "Alıcı";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(322, 459);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 22);
+            this.textBox3.TabIndex = 13;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(454, 464);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(103, 17);
+            this.label10.TabIndex = 12;
+            this.label10.Text = "En Düşük Fiyat";
+            // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(533, 450);
+            this.textBox2.Location = new System.Drawing.Point(583, 459);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 22);
             this.textBox2.TabIndex = 11;
@@ -300,7 +331,6 @@ namespace BorsaOtomasyonu
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.groupBox1);
-            this.tabPage3.Controls.Add(this.urunKatBox);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -411,13 +441,6 @@ namespace BorsaOtomasyonu
             this.label2.TabIndex = 1;
             this.label2.Text = "Ürün Miktarı";
             // 
-            // urunKatBox
-            // 
-            this.urunKatBox.Location = new System.Drawing.Point(403, 30);
-            this.urunKatBox.Name = "urunKatBox";
-            this.urunKatBox.Size = new System.Drawing.Size(130, 22);
-            this.urunKatBox.TabIndex = 3;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -438,7 +461,6 @@ namespace BorsaOtomasyonu
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.urunListele)).EndInit();
             this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -454,7 +476,6 @@ namespace BorsaOtomasyonu
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox urunFiyatBox;
         private System.Windows.Forms.TextBox urunMikBox;
-        private System.Windows.Forms.TextBox urunKatBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -481,6 +502,9 @@ namespace BorsaOtomasyonu
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox kategoriBox;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBox3;
     }
 }
 

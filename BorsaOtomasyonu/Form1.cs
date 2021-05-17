@@ -38,7 +38,7 @@ namespace BorsaOtomasyonu
         private void urunListele_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            urunKatBox.Text = urunListele.CurrentRow.Cells["UrunKategori"].Value.ToString();
+           
             urunFiyatBox.Text= urunListele.CurrentRow.Cells["UrunFiyat"].Value.ToString();
             urunMikBox.Text = urunListele.CurrentRow.Cells["urunMiktar"].Value.ToString();
 
@@ -80,6 +80,8 @@ namespace BorsaOtomasyonu
             }
             connection.Close();
         }
+        
+
         public string loginVeri;
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -186,21 +188,41 @@ namespace BorsaOtomasyonu
 
            
         }
+        public void urunSaticiAdiGetir()
+        {
+            SqlCommand command = new SqlCommand();
+
+            command.CommandText = "select UrunSaticiAdi from UrunTable where UrunFiyat=@purunfiyat";
+            command.Connection = connection;
+            command.CommandType = CommandType.Text;
+            command.Parameters.AddWithValue("purunfiyat", textBox2.Text);
+            SqlDataReader dr;
+            connection.Open();
+            dr = command.ExecuteReader();
+
+            while (dr.Read())
+            {
+                //comboBox2.Items.Add(dr["UrunSaticiAdi"]);
+                textBox3.Text = dr["UrunSaticiAdi"].ToString();
+            }
+            connection.Close();
+        }
         private void button6_Click(object sender, EventArgs e)
         {
             verCek();
+            urunSaticiAdiGetir();
             connection.Open();
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "update UrunTable set UrunMiktar-=@purunmiktar where UrunKategori=@purunkat and UrunFiyat=@urunfiyat";        
+            cmd.CommandText = "update UrunTable set UrunMiktar-=@purunmiktar  where UrunKategori=@purunkat and UrunFiyat=@urunfiyat";        
             cmd.Parameters.AddWithValue("@purunkat", comboBox2.Text);
             cmd.Parameters.AddWithValue("@purunmiktar", Convert.ToInt32(textBox1.Text));
-           
             cmd.Parameters.AddWithValue("@urunfiyat", textBox2.Text);
+
 
             cmd.ExecuteNonQuery();
            
-            MessageBox.Show(value.ToString());
+            //MessageBox.Show(value.ToString());
             SqlCommand komut = connection.CreateCommand();
 
             komut.CommandType = CommandType.Text;
@@ -208,6 +230,14 @@ namespace BorsaOtomasyonu
             komut.Parameters.AddWithValue("@puserpara", Convert.ToDecimal(value));
             komut.Parameters.AddWithValue("@puserkullanici", saticiAdiText.Text);
             komut.ExecuteNonQuery();
+
+            SqlCommand komut2 = connection.CreateCommand();
+
+            komut2.CommandType = CommandType.Text;
+            komut2.CommandText = "update UserTable  set UserPara+=@puserpara where UserKullanici=@userkullanici";
+            komut2.Parameters.AddWithValue("@puserpara", Convert.ToDecimal(value));
+            komut2.Parameters.AddWithValue("@userkullanici",textBox3.Text);
+            komut2.ExecuteNonQuery();
             connection.Close();            
 
         }

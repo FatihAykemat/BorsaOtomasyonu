@@ -31,6 +31,7 @@ namespace BorsaOtomasyonu
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.sifreLogin = new System.Windows.Forms.TextBox();
             this.kullaniciLogin = new System.Windows.Forms.TextBox();
@@ -56,6 +57,7 @@ namespace BorsaOtomasyonu
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,6 +73,8 @@ namespace BorsaOtomasyonu
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.tabPage1.Controls.Add(this.pictureBox1);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.sifreLogin);
             this.tabPage1.Controls.Add(this.kullaniciLogin);
@@ -82,14 +86,23 @@ namespace BorsaOtomasyonu
             this.tabPage1.Size = new System.Drawing.Size(546, 405);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Login";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::BorsaOtomasyonu.Properties.Resources.login_user_login_person_icon_png_and_vector_for_free_download_user_login_png_512_512;
+            this.pictureBox1.Location = new System.Drawing.Point(7, 96);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(109, 133);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button1.Location = new System.Drawing.Point(245, 180);
+            this.button1.Location = new System.Drawing.Point(291, 195);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(87, 49);
+            this.button1.Size = new System.Drawing.Size(125, 34);
             this.button1.TabIndex = 4;
             this.button1.Text = "Giriş";
             this.button1.UseVisualStyleBackColor = true;
@@ -97,7 +110,7 @@ namespace BorsaOtomasyonu
             // 
             // sifreLogin
             // 
-            this.sifreLogin.Location = new System.Drawing.Point(207, 124);
+            this.sifreLogin.Location = new System.Drawing.Point(291, 149);
             this.sifreLogin.Name = "sifreLogin";
             this.sifreLogin.PasswordChar = '*';
             this.sifreLogin.Size = new System.Drawing.Size(125, 22);
@@ -105,7 +118,7 @@ namespace BorsaOtomasyonu
             // 
             // kullaniciLogin
             // 
-            this.kullaniciLogin.Location = new System.Drawing.Point(207, 79);
+            this.kullaniciLogin.Location = new System.Drawing.Point(291, 100);
             this.kullaniciLogin.Name = "kullaniciLogin";
             this.kullaniciLogin.Size = new System.Drawing.Size(125, 22);
             this.kullaniciLogin.TabIndex = 2;
@@ -114,7 +127,7 @@ namespace BorsaOtomasyonu
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label10.Location = new System.Drawing.Point(59, 120);
+            this.label10.Location = new System.Drawing.Point(210, 146);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(58, 25);
             this.label10.TabIndex = 1;
@@ -124,7 +137,7 @@ namespace BorsaOtomasyonu
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label9.Location = new System.Drawing.Point(56, 79);
+            this.label9.Location = new System.Drawing.Point(143, 96);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(125, 25);
             this.label9.TabIndex = 0;
@@ -132,6 +145,7 @@ namespace BorsaOtomasyonu
             // 
             // tabPage2
             // 
+            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.tabPage2.Controls.Add(this.adresBox);
             this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Controls.Add(this.telefonBox);
@@ -155,7 +169,6 @@ namespace BorsaOtomasyonu
             this.tabPage2.Size = new System.Drawing.Size(546, 405);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Register";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // adresBox
             // 
@@ -317,6 +330,7 @@ namespace BorsaOtomasyonu
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
@@ -350,5 +364,6 @@ namespace BorsaOtomasyonu
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         public System.Windows.Forms.TextBox kullaniciLogin;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
