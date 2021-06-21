@@ -41,12 +41,15 @@ namespace BorsaOtomasyonu
             this.label10 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.paraBirimiBox = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -65,6 +68,14 @@ namespace BorsaOtomasyonu
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.button7 = new System.Windows.Forms.Button();
+            this.raporData = new System.Windows.Forms.DataGridView();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.muhasebe_label = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -73,6 +84,8 @@ namespace BorsaOtomasyonu
             ((System.ComponentModel.ISupportInitialize)(this.urunListele)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.raporData)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -80,10 +93,11 @@ namespace BorsaOtomasyonu
             this.tabControl.Controls.Add(this.tabPage1);
             this.tabControl.Controls.Add(this.tabPage2);
             this.tabControl.Controls.Add(this.tabPage3);
+            this.tabControl.Controls.Add(this.tabPage4);
             this.tabControl.Location = new System.Drawing.Point(-1, 2);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(941, 530);
+            this.tabControl.Size = new System.Drawing.Size(1095, 530);
             this.tabControl.TabIndex = 0;
             // 
             // tabPage1
@@ -96,7 +110,7 @@ namespace BorsaOtomasyonu
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(933, 501);
+            this.tabPage1.Size = new System.Drawing.Size(1087, 501);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Admin";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -163,14 +177,14 @@ namespace BorsaOtomasyonu
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(933, 501);
+            this.tabPage2.Size = new System.Drawing.Size(1087, 501);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Alıcı";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(322, 459);
+            this.textBox3.Location = new System.Drawing.Point(348, 459);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 22);
             this.textBox3.TabIndex = 13;
@@ -193,6 +207,10 @@ namespace BorsaOtomasyonu
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.muhasebe_label);
+            this.groupBox3.Controls.Add(this.label13);
+            this.groupBox3.Controls.Add(this.label11);
+            this.groupBox3.Controls.Add(this.textBox4);
             this.groupBox3.Controls.Add(this.button6);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.label7);
@@ -200,16 +218,32 @@ namespace BorsaOtomasyonu
             this.groupBox3.Controls.Add(this.comboBox2);
             this.groupBox3.Location = new System.Drawing.Point(719, 264);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(207, 225);
+            this.groupBox3.Size = new System.Drawing.Size(344, 225);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Satın Al";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(9, 150);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(145, 17);
+            this.label11.TabIndex = 6;
+            this.label11.Text = "Almak istediğiniz tutar";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(205, 145);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(114, 22);
+            this.textBox4.TabIndex = 5;
+            // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(28, 178);
+            this.button6.Location = new System.Drawing.Point(9, 178);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(173, 39);
+            this.button6.Size = new System.Drawing.Size(192, 39);
             this.button6.TabIndex = 4;
             this.button6.Text = "Satın Alım isteğini kaydet";
             this.button6.UseVisualStyleBackColor = true;
@@ -218,7 +252,7 @@ namespace BorsaOtomasyonu
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 104);
+            this.label8.Location = new System.Drawing.Point(9, 108);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(190, 17);
             this.label8.TabIndex = 3;
@@ -227,7 +261,7 @@ namespace BorsaOtomasyonu
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(126, 27);
+            this.label7.Location = new System.Drawing.Point(189, 18);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(55, 17);
             this.label7.TabIndex = 2;
@@ -235,7 +269,7 @@ namespace BorsaOtomasyonu
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(82, 133);
+            this.textBox1.Location = new System.Drawing.Point(205, 103);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(114, 22);
             this.textBox1.TabIndex = 1;
@@ -243,7 +277,7 @@ namespace BorsaOtomasyonu
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(69, 65);
+            this.comboBox2.Location = new System.Drawing.Point(192, 47);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(127, 24);
             this.comboBox2.TabIndex = 0;
@@ -251,6 +285,7 @@ namespace BorsaOtomasyonu
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.paraBirimiBox);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.button4);
             this.groupBox2.Controls.Add(this.comboBox1);
@@ -258,15 +293,28 @@ namespace BorsaOtomasyonu
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Location = new System.Drawing.Point(719, 24);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(211, 234);
+            this.groupBox2.Size = new System.Drawing.Size(344, 234);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Para Ekle";
             // 
+            // paraBirimiBox
+            // 
+            this.paraBirimiBox.FormattingEnabled = true;
+            this.paraBirimiBox.Items.AddRange(new object[] {
+            "USD",
+            "EURO",
+            "STERLIN",
+            "TL"});
+            this.paraBirimiBox.Location = new System.Drawing.Point(205, 70);
+            this.paraBirimiBox.Name = "paraBirimiBox";
+            this.paraBirimiBox.Size = new System.Drawing.Size(121, 24);
+            this.paraBirimiBox.TabIndex = 8;
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(90, 31);
+            this.label6.Location = new System.Drawing.Point(79, 20);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(104, 17);
             this.label6.TabIndex = 7;
@@ -285,7 +333,7 @@ namespace BorsaOtomasyonu
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(49, 51);
+            this.comboBox1.Location = new System.Drawing.Point(49, 40);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(145, 24);
             this.comboBox1.TabIndex = 2;
@@ -334,7 +382,7 @@ namespace BorsaOtomasyonu
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(933, 501);
+            this.tabPage3.Size = new System.Drawing.Size(1087, 501);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Satıcı";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -441,14 +489,93 @@ namespace BorsaOtomasyonu
             this.label2.TabIndex = 1;
             this.label2.Text = "Ürün Miktarı";
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.label12);
+            this.tabPage4.Controls.Add(this.dateTimePicker2);
+            this.tabPage4.Controls.Add(this.dateTimePicker1);
+            this.tabPage4.Controls.Add(this.button7);
+            this.tabPage4.Controls.Add(this.raporData);
+            this.tabPage4.Location = new System.Drawing.Point(4, 25);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(1087, 501);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Rapor";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(971, 275);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(75, 34);
+            this.button7.TabIndex = 1;
+            this.button7.Text = "Rapor Al";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // raporData
+            // 
+            this.raporData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.raporData.Location = new System.Drawing.Point(35, 53);
+            this.raporData.Name = "raporData";
+            this.raporData.RowHeadersWidth = 51;
+            this.raporData.RowTemplate.Height = 24;
+            this.raporData.Size = new System.Drawing.Size(736, 352);
+            this.raporData.TabIndex = 0;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(846, 181);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePicker1.TabIndex = 2;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(846, 225);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePicker2.TabIndex = 3;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label12.Location = new System.Drawing.Point(842, 142);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(161, 20);
+            this.label12.TabIndex = 4;
+            this.label12.Text = "Tarih Aralığı Seçme ";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label13.Location = new System.Drawing.Point(12, 32);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(143, 20);
+            this.label13.TabIndex = 7;
+            this.label13.Text = "Muhasebe ücreti: ";
+            // 
+            // muhasebe_label
+            // 
+            this.muhasebe_label.AutoSize = true;
+            this.muhasebe_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.muhasebe_label.Location = new System.Drawing.Point(24, 52);
+            this.muhasebe_label.Name = "muhasebe_label";
+            this.muhasebe_label.Size = new System.Drawing.Size(13, 20);
+            this.muhasebe_label.TabIndex = 8;
+            this.muhasebe_label.Text = ".";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(949, 538);
+            this.ClientSize = new System.Drawing.Size(1102, 539);
             this.Controls.Add(this.tabControl);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Program İşlemleri";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -463,6 +590,9 @@ namespace BorsaOtomasyonu
             this.tabPage3.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.raporData)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -505,6 +635,17 @@ namespace BorsaOtomasyonu
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox paraBirimiBox;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.DataGridView raporData;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label muhasebe_label;
+        private System.Windows.Forms.Label label13;
     }
 }
 

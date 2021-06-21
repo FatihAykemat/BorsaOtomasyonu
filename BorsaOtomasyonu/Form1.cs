@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data;
+using System.Xml;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
 
 namespace BorsaOtomasyonu
 {
@@ -83,13 +87,8 @@ namespace BorsaOtomasyonu
         
 
         public string loginVeri;
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            
-            dataGetir();
-            kategoriDataGetir();
-            saticiAdiText.Text = loginVeri;
-        }
+        public int minValue2 = 0;
+      
 
     
 
@@ -119,15 +118,49 @@ namespace BorsaOtomasyonu
             onayLabel.Text = paraEkleBox.Text + " tutarında para onay beklemektedir";
 
         }
+        decimal toplam = 0;
+        decimal DovizGetir()
+        {
+            string bugun = "https://www.tcmb.gov.tr/kurlar/today.xml";
+            decimal USD, EURO, STERLIN;
+            XmlDocument xmldoc = new XmlDocument();
+            xmldoc.Load(bugun);
+          
+            EURO = Convert.ToDecimal(xmldoc.SelectSingleNode("Tarih_Date/Currency[@Kod='EUR']/BanknoteSelling").InnerText.Replace('.', ','));
+            STERLIN = Convert.ToDecimal(xmldoc.SelectSingleNode("Tarih_Date/Currency[@Kod='GBP']/BanknoteSelling").InnerText.Replace('.', ','));
+            USD = Convert.ToDecimal(xmldoc.SelectSingleNode("Tarih_Date/Currency[@Kod='USD']/BanknoteSelling").InnerText.Replace('.', ','));
+            if (paraBirimiBox.SelectedItem.ToString() == "USD")
+            {
+                toplam = USD * Convert.ToDecimal(paraEkleBox.Text);
 
+            }
+            else if (paraBirimiBox.SelectedItem.ToString()=="EURO")
+            {
+                toplam = EURO * Convert.ToDecimal(paraEkleBox.Text);
+            }
+            else if (paraBirimiBox.SelectedItem.ToString()=="STERLIN")
+            {
+                toplam = STERLIN * Convert.ToDecimal(paraEkleBox.Text);
+            }
+            else if (paraBirimiBox.SelectedItem.ToString()=="TL")
+            {
+                toplam =1*Convert.ToDecimal(paraEkleBox.Text);
+            }
+
+
+
+            return toplam ;
+        }
         private void button5_Click(object sender, EventArgs e)
         {
+            
             connection.Open();
+            DovizGetir();
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "update UserTable set UserPara+=@puserpara2 where UserName=@username";
             cmd.Parameters.AddWithValue("@username", comboBox1.Text);
-            cmd.Parameters.AddWithValue("@puserpara2", Convert.ToDecimal(paraEkleBox.Text));
+            cmd.Parameters.AddWithValue("@puserpara2",toplam);
 
             cmd.ExecuteNonQuery();
             connection.Close();
@@ -171,7 +204,8 @@ namespace BorsaOtomasyonu
         }
        
         public int value =0;
-       
+        
+
         public int verCek()
         {
             
@@ -181,9 +215,11 @@ namespace BorsaOtomasyonu
                              select Convert.ToInt32(row.Cells[2].FormattedValue)).Min().ToString();
 
             minValue = Convert.ToInt32( textBox2.Text);
+            minValue2 = minValue;
             
             int girilenMiktar = Convert.ToInt32(textBox1.Text);
             value = minValue * girilenMiktar;
+            
             return value;
 
            
@@ -207,30 +243,66 @@ namespace BorsaOtomasyonu
             }
             connection.Close();
         }
-        private void button6_Click(object sender, EventArgs e)
+        public DateTime time;
+        DataSet dt2 = new DataSet();
+        public void button6_Click(object sender, EventArgs e)
         {
             verCek();
             urunSaticiAdiGetir();
+            SqlCommand cmd;
             connection.Open();
-            SqlCommand cmd = connection.CreateCommand();
+            cmd = connection.CreateCommand();            
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "update UrunTable set UrunMiktar-=@purunmiktar  where UrunKategori=@purunkat and UrunFiyat=@urunfiyat";        
             cmd.Parameters.AddWithValue("@purunkat", comboBox2.Text);
             cmd.Parameters.AddWithValue("@purunmiktar", Convert.ToInt32(textBox1.Text));
             cmd.Parameters.AddWithValue("@urunfiyat", textBox2.Text);
+            /*
+
+            DataRow drow = dt2.NewRow();
+            drow["Tarih"] =  DateTime.Now.ToShortDateString();
+            drow["Ürün Tipi"]=comboBox2.SelectedItem.ToString();
+            drow["Alım Tutarı"] = textBox4.Text;
+            drow["Miktar"] = textBox1.Text;
+            dt2.Rows.Add(drow);
+            */
+            
+            SqlCommand ekleCommand = new SqlCommand("insert into RaporTable(Tarih,UrunTipi,AlimTutari,Miktar) values (@ptarih,@puruntipi,@palimtutari,@pmiktar)", SqlVariables.connection);
+            SqlVariables.CheckConnection(SqlVariables.connection);
 
 
-            cmd.ExecuteNonQuery();
+            ekleCommand.Parameters.AddWithValue("@ptarih", Convert.ToDateTime( DateTime.Now.ToShortDateString()));
+            ekleCommand.Parameters.AddWithValue("@puruntipi",comboBox2.SelectedItem.ToString());
+            ekleCommand.Parameters.AddWithValue("@palimtutari", Convert.ToInt32(textBox4.Text));
+            ekleCommand.Parameters.AddWithValue("@pmiktar",Convert.ToInt32(textBox1.Text));
+            ekleCommand.ExecuteNonQuery();
+            if (Convert.ToInt32(textBox4.Text)<minValue2)
+            {
+                MessageBox.Show("İstediginiz fiyatta urun yok , istediğiniz fiyat gelene kadar beklenecek");
+            }
+            else if(Convert.ToInt32(textBox4.Text)>=minValue2)
+            {
+                cmd.ExecuteNonQuery();
+            }
+            
            
             //MessageBox.Show(value.ToString());
             SqlCommand komut = connection.CreateCommand();
-
+            double muhasebe_ucret = (Convert.ToDouble(value) * 1) / 100;
             komut.CommandType = CommandType.Text;
             komut.CommandText = "update UserTable set UserPara-=@puserpara where UserKullanici=@puserkullanici";
-            komut.Parameters.AddWithValue("@puserpara", Convert.ToDecimal(value));
+            komut.Parameters.AddWithValue("@puserpara", Convert.ToDecimal(value+(value*1)/100));
             komut.Parameters.AddWithValue("@puserkullanici", saticiAdiText.Text);
             komut.ExecuteNonQuery();
+            //MessageBox.Show(Convert.ToString((value*1)/100));
+            //muhasebe_label.Text = Convert.ToString(Convert.ToDecimal((value * 1) / 100));
+            muhasebe_label.Text = muhasebe_ucret.ToString();
+            SqlCommand komut3 = connection.CreateCommand();
 
+            komut3.CommandType = CommandType.Text;
+            komut3.CommandText = "update UserTable set UserPara+=@puserpara where UserKullanici='muhasebeci'";
+            komut3.Parameters.AddWithValue("@puserpara",Convert.ToDecimal( muhasebe_ucret));
+            komut3.ExecuteNonQuery();
             SqlCommand komut2 = connection.CreateCommand();
 
             komut2.CommandType = CommandType.Text;
@@ -241,7 +313,24 @@ namespace BorsaOtomasyonu
             connection.Close();            
 
         }
-
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            
+            dataGetir();
+            kategoriDataGetir();
+            saticiAdiText.Text = loginVeri;
+            raporData.AllowUserToAddRows = true;
+            raporData.AllowUserToDeleteRows = true;
+            raporData.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            
+            /*
+            dt2.Columns.Add("Tarih");
+            dt2.Columns.Add("Ürün Tipi");
+            dt2.Columns.Add("Alım Tutarı");
+            dt2.Columns.Add("Miktar");
+            raporData.DataSource = dt2;
+            */
+        }
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             
@@ -254,6 +343,64 @@ namespace BorsaOtomasyonu
             connection.Close();
         }
 
-       
+        private void button7_Click(object sender, EventArgs e)
+        {
+            dt2.Clear();
+            SqlVariables.CheckConnection(SqlVariables.connection);
+            SqlDataAdapter adtr2 = new SqlDataAdapter("select Tarih, UrunTipi,AlimTutari,Miktar from RaporTable where Tarih between @tarih1 and @tarih2", SqlVariables.connection);
+            adtr2.SelectCommand.Parameters.AddWithValue("@tarih1", dateTimePicker1.Value);
+            adtr2.SelectCommand.Parameters.AddWithValue("@tarih2", dateTimePicker2.Value);
+            //adtr2.Fill(dt2, "RaporTable");
+            adtr2.Fill(dt2, "RaporTable");
+            raporData.DataSource = dt2.Tables["RaporTable"];
+
+            BaseFont STF_Helvetica_Turkish = BaseFont.CreateFont("Helvetica", "CP1254", BaseFont.NOT_EMBEDDED);
+            iTextSharp.text.Font fontNormal = new iTextSharp.text.Font(STF_Helvetica_Turkish, 12, iTextSharp.text.Font.NORMAL);
+            PdfPTable pdfTable = new PdfPTable(raporData.ColumnCount);
+            pdfTable.DefaultCell.Padding = 3;
+            pdfTable.WidthPercentage = 30;
+            pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
+            pdfTable.DefaultCell.BorderWidth = 1;
+
+            foreach (DataGridViewColumn column in raporData.Columns)
+            {
+                PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText, fontNormal));
+                pdfTable.AddCell(cell);
+            }
+            int row = raporData.Rows.Count;
+            int cell2 = raporData.Rows[1].Cells.Count;
+            for (int i = 0; i < row - 1; i++)
+            {
+                for (int j = 0; j < cell2; j++)
+                {
+                    if (raporData.Rows[i].Cells[j].Value == null)
+                    {
+
+                        raporData.Rows[i].Cells[j].Value = "null";
+                    }
+                    pdfTable.AddCell(raporData.Rows[i].Cells[j].Value.ToString());
+
+
+                }
+            }
+            //PDF'e Aktar
+            string folderPath = @"C:\rapor\";
+
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+            using (FileStream stream = new FileStream(folderPath + "Rapor.pdf", FileMode.Create))
+            {
+                Document pdfDoc = new Document(PageSize.A2, 10f, 10f, 10f, 0f);
+                PdfWriter.GetInstance(pdfDoc, stream);
+                pdfDoc.Open();
+                pdfDoc.Add(pdfTable);
+                pdfDoc.Close();
+                stream.Close();
+            }
+            MessageBox.Show("PDF Oluşturuldu " + folderPath);
+
+        }
     }
 }

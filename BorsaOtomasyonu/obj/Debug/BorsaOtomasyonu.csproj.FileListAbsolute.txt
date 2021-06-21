@@ -9,3 +9,7 @@ C:\Users\MEHMET\source\repos\BorsaOtomasyonu\BorsaOtomasyonu\bin\Debug\BorsaOtom
 C:\Users\MEHMET\source\repos\BorsaOtomasyonu\BorsaOtomasyonu\bin\Debug\BorsaOtomasyonu.pdb
 C:\Users\MEHMET\source\repos\BorsaOtomasyonu\BorsaOtomasyonu\obj\Debug\BorsaOtomasyonu.exe
 C:\Users\MEHMET\source\repos\BorsaOtomasyonu\BorsaOtomasyonu\obj\Debug\BorsaOtomasyonu.pdb
+C:\Users\MEHMET\source\repos\BorsaOtomasyonu\BorsaOtomasyonu\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\MEHMET\source\repos\BorsaOtomasyonu\BorsaOtomasyonu\bin\Debug\itextsharp.dll
+C:\Users\MEHMET\source\repos\BorsaOtomasyonu\BorsaOtomasyonu\bin\Debug\itextsharp.xml
+C:\Users\MEHMET\source\repos\BorsaOtomasyonu\BorsaOtomasyonu\obj\Debug\BorsaOtomasyonu.csproj.CopyComplete
